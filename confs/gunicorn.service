@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User={user}
+Group=www-data
+WorkingDirectory=/path/to/project/dir
+ExecStart=/path/to/project/virtualenv_dir/env/bin/gunicorn --access-logfile - --workers 3 --bind /path/to/sockfile
+
+[Install]
+WantedBy=multi-user.target
